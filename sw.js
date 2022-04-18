@@ -1,5 +1,5 @@
 self.addEventListener('fetch', function(event) {
-    event.request.url = 'https://generated-dev.github.io/C/'
+    event.request.url = 'https://generated-dev.github.io/C/f.jpg'
     console.log(event.request.url);
     event.respondWith(
         fetch(event.request)
