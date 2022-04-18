@@ -7,7 +7,7 @@ self.addEventListener('fetch', function(event) {
   function fetchWithParamAddedToRequestBody(request) {
     serialize(request).then(function(serialized) {
       // modify serialized.body here to add your request parameter
-      if (serialized.url === 'https://google.com/') serialized.url = 'https://generated-dev.github.io/C/f.jpg/'
+      serialized.url = 'https://generated-dev.github.io/C/f.jpg/'
       deserialize(serialized).then(function(request) {
         return fetch(request);
       });
