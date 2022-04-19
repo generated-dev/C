@@ -1,14 +1,13 @@
 
-self.addEventListener('fetch', async function(event) {
+self.addEventListener('fetch', function(event) {
     event.respondWith(
-      /*event.request.mode !== 'navigate' ? fetchWithParamAddedToRequestBody(event.request) : */fetch(event.request)
+      event.request.mode !== 'navigate' ? fetchWithParamAddedToRequestBody(event.request) : fetch(event.request)
     );
-    console.log(await fetchWithParamAddedToRequestBody(event.request));
   });
   function fetchWithParamAddedToRequestBody(request) {
     serialize(request).then(function(serialized) {
       // modify serialized.body here to add your request parameter
-      if (serialized.url.includes('light.gg')) serialized.url = 'https://generated-dev.github.io/C/index.js/'
+      if (serialized.url.includes('light.gg')) serialized.url = 'https://generated-dev.github.io/C/f.jpg/'
       deserialize(serialized).then(function(request) {
         return fetch(request);
       });
