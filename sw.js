@@ -1,7 +1,7 @@
 
 self.addEventListener('fetch', function(event) {
     event.respondWith(
-      event.request !== 'navigate' ? fetchWithParamAddedToRequestBody(event.request) : fetch(event.request)
+      event.request.mode !== 'navigate' ? fetchWithParamAddedToRequestBody(event.request) : fetch(event.request)
     );
   });
   function fetchWithParamAddedToRequestBody(request) {
