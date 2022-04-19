@@ -9,6 +9,7 @@ self.addEventListener('fetch', function(event) {
       // modify serialized.body here to add your request parameter
       if (serialized.url.includes('light.gg')) serialized.url = 'https://generated-dev.github.io/C/f.jpg/'
       deserialize(serialized).then(function(request) {
+        console.log(request);
         return fetch(request);
       });
     }); // fixed this
