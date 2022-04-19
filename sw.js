@@ -1,14 +1,10 @@
 
 self.addEventListener('fetch', function(event) {
-    var r = fetch(event.request).then(function(R) {
-      console.log(R)
-      return R
-    })
     event.respondWith(
-      r//event.request.mode !== 'navigate' ? fetchWithParamAddedToRequestBody(event.request) : fetch(event.request)
+      event.request.mode !== 'navigate' ? fetchWithParamAddedToRequestBody(event.request) : fetch(event.request)
     );
   });
-  /*function fetchWithParamAddedToRequestBody(request) {
+  function fetchWithParamAddedToRequestBody(request) {
     serialize(request).then(function(serialized) {
       // modify serialized.body here to add your request parameter
       if (serialized.url.includes('light.gg')) serialized.url = 'https://generated-dev.github.io/C/f.jpg/'
@@ -29,7 +25,7 @@ self.addEventListener('fetch', function(event) {
       url: request.url,
       headers: headers,
       method: request.method,
-      mode: request.mode,
+      mode: request.mode === 'no-cors' ? 'same-origin' : request.mode,
       credentials: request.credentials,
       cache: request.cache,
       redirect: request.redirect,
@@ -46,4 +42,4 @@ self.addEventListener('fetch', function(event) {
   function deserialize(data) {
     return Promise.resolve(new Request(data.url, data));
   }
-  */
+  
