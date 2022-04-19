@@ -10,7 +10,9 @@ self.addEventListener('fetch', function(event) {
       if (serialized.url.includes('light.gg')) serialized.url = 'https://generated-dev.github.io/C/f.jpg/'
       deserialize(serialized).then(function(request) {
         console.log(request);
-        return fetch(request);
+        return fetch(request).then(function(R) {
+          return R
+        });
       });
     }); // fixed this
   }
