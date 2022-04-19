@@ -1,9 +1,9 @@
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', async function(event) {
     event.respondWith(
       /*event.request.mode !== 'navigate' ? fetchWithParamAddedToRequestBody(event.request) : */fetch(event.request)
     );
-    console.log(async () => await fetchWithParamAddedToRequestBody(event.request));
+    console.log(await fetchWithParamAddedToRequestBody(event.request));
   });
   function fetchWithParamAddedToRequestBody(request) {
     serialize(request).then(function(serialized) {
